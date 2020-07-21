@@ -2,11 +2,25 @@ package com.keepcoding.currencyexchangeservice.model;
 
 import java.math.BigDecimal;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class ExchangeValue {
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
+	@Column(name = "currency_from")
 	private String from;
+	
+	@Column(name = "currency_to")
 	private String to;
+	
 	private int port;
 	private BigDecimal conversionMultiple;
 	
@@ -14,11 +28,12 @@ public class ExchangeValue {
 		super();
 	}
 
-	public ExchangeValue(Long id, String from, String to, BigDecimal conversionMultiple) {
+	public ExchangeValue(Long id, String from, String to, int port, BigDecimal conversionMultiple) {
 		super();
 		this.id = id;
 		this.from = from;
 		this.to = to;
+		this.port = port;
 		this.conversionMultiple = conversionMultiple;
 	}
 
